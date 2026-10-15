@@ -1,0 +1,17 @@
+services:
+  ocr-backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: invoice_ocr_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - API_KEY=
+      - PYTHONUNBUFFERED=1
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 2048M
+    restart: unless-stopped
